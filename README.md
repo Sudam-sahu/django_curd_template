@@ -1,0 +1,1 @@
+# django_curd_template
