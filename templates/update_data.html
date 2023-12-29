@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'cdnlines.html' %}
+    <title>Update | Students Data</title>
+    <style media="screen">
+        input{
+            margin-top: 2px;
+        }
+        h2{
+            margin-top: 30px;
+        }
+        a{
+            margin-right: 50px
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center">Enter Student Details</h2>
+    <a href="{% url 'fetching_data' %}" class="btn btn-dark text-white" style="float:right">Back</a>
+    {% comment %} Form container start {% endcomment %}
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+                <form method="POST">   
+                    {% csrf_token %}
+                    <input type="text" name= "fname" class="form-control" value = "{{student.first_name}}"  placeholder= "First Name">
+                    <input type="text" name= "lname" class="form-control" value = "{{student.last_name}}"  placeholder= "Last Name">
+                    <input type="text" name= "course" class="form-control"value = "{{student.course_name}}"   placeholder= "Course">
+                    <input type="number" name= "fee" class="form-control" value = "{{student.fee}}"  placeholder= "Fee">
+
+                    {% comment %} Assignment-1 & 2 in single row {% endcomment %}
+                    <div class="row" style="margin-top:4px">
+                        <div class="col-md-6">
+                            <input type="number" name= "Assignment1" class="form-control" value = "{{student.assignment1}}" placeholder= "Assign.1 Mark">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" name= "Assignment2" class="form-control" value = "{{student.assignment2}}" placeholder= "Assign.2 Mark">
+                        </div>
+                    </div>
+
+                    {% comment %} Assignment-2 & 3 in another row {% endcomment %}
+                    <div class="row" style="margin-top:4px">
+                        <div class="col-md-6">
+                            <input type="number" name= "Assignment3" class="form-control" value = "{{student.assignment3}}" placeholder= "Assign.3 Mark">
+                        </div> 
+                        <div class="col-md-6"> 
+                            <input type="number" name= "Assignment4" class="form-control" value = "{{student.assignment4}}" placeholder= "Assign.4 Mark">
+                        </div>
+                    </div>
+                    {% comment %} Submit & reset buttom  {% endcomment %}
+                    <center style="margin-top:4px">
+                        <input type="submit" onclick="return confirm('Are you sure you want to Update?')" value = "Update" class="btn btn-success">
+                        <input type="reset" value = "Clear" class="btn btn-danger"><br>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
